@@ -4,3 +4,8 @@
 @import
   "minima/skins/{{ site.minima.skin | default: 'classic' }}",
   "minima/initialize";
+
+// Header page link
+.page-link {
+  font-weight: bold;
+}

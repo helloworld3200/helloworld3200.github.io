@@ -2,4 +2,4 @@
 
 @echo off
 
-bundle exec jekyll serve -w
+bundle exec jekyll serve -w --livereload
