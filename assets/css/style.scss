@@ -5,7 +5,25 @@
   "minima/skins/{{ site.minima.skin | default: 'classic' }}",
   "minima/initialize";
 
-// Header page link
-.page-link {
-  font-weight: bold;
+// Custom styles
+@import "common/theme-colors"; 
+
+// Header title
+.site-title {
+  font-weight: 600;
+  font-size: 1.7em;
+  padding: 0;
+  
+  // Gradient
+  @include logo-text-bottom-gradient();
+}
+
+.site-header {
+  border-top: none;
+  max-height: $spacing-unit * 0.8;
+  background-color: $header-color-0;
+}
+
+.main-title {
+  text-size: 1em;
 }
