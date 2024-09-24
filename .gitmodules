@@ -1,0 +1,3 @@
+[submodule "megaline"]
+	path = megaline
+	url = https://github.com/helloworld3200/megaline
