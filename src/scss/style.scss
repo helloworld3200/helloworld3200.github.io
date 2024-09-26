@@ -1,0 +1,99 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$logo-color-0: #3fb687;
+$logo-color-1: #b2c6e6;
+
+@mixin bshadow1 {
+  box-shadow: 5px 5px 10px #07070770;
+}
+
+@mixin tshadow1 {
+  text-shadow: 2px 2px 4px #3a3838;
+}
+
+@mixin logo-colors-gradient {
+  background-image: linear-gradient(15deg, $logo-color-0 0%, $logo-color-1 100%);
+}
+
+@mixin text-logo-colors-gradient {
+  @include logo-colors-gradient();
+  background-clip: text;
+  text-decoration: none;
+  color: transparent;
+}
+
+@mixin dynamic-lift-effect {
+  transition: transform 0.4s ease-out;
+  transform: translateY(0);
+
+  &:hover {
+    transform: translateY(-0.15em);
+  }
+}
+
+@mixin dynamic-underline-effect {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    @include logo-colors-gradient;
+    transition: width 0.4s ease-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+div .nav {
+  position: fixed;
+  background-color: #3a3838;
+  width: 100%;
+  min-height: 3.5em;
+  border-radius: 1em;
+
+  display: flex;
+  align-items: center;
+
+  @include bshadow1();
+}
+
+div .nav-home {
+  display: flex;
+  align-items: center;
+
+  margin-left: 1.1em;
+  @include dynamic-lift-effect();
+}
+
+.nav-title {
+  @include text-logo-colors-gradient();
+  @include dynamic-underline-effect();
+  font-weight: 630;
+  margin-left: 0.4em;
+  font-size: 1.7em;
+}
+
+.nav-logo {
+  max-width: 2.2em;
+  max-height: 2.2em;
+  overflow: hidden;
+}
