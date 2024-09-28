@@ -1,0 +1,160 @@
+// Main SCSS file for the project
+
+$bg-color: #242424;
+
+$logo-color-0: #3fb687;
+$logo-color-1: #b2c6e6;
+$logo-colors-gradient: linear-gradient(15deg, $logo-color-0 0%, $logo-color-1 100%);
+
+$nav-link-color: rgb(237, 239, 247);
+$nav-link-underline: linear-gradient(15deg, $nav-link-color 0%, $nav-link-color 100%);
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: $bg-color;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin bshadow1 {
+  box-shadow: 5px 5px 10px #07070770;
+}
+
+@mixin tshadow1 {
+  text-shadow: 2px 2px 4px #3a3838;
+}
+
+@mixin dshadow1 {
+  filter: drop-shadow(8px 8px 5px #0707071a);
+}
+
+@mixin text-logo-colors-gradient($useTranspColor: true) {
+  background-image: $logo-colors-gradient;
+  background-clip: text;
+  text-decoration: none;
+  color: transparent;
+}
+
+@mixin dynamic-lift-effect {
+  transition: transform 0.4s ease-out;
+  transform: translateY(0);
+
+  &:hover {
+    transform: translateY(-0.15em);
+  }
+}
+
+@mixin dynamic-underline-effect($bgProperty, $bgColor) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    #{$bgProperty}: $bgColor;
+    transition: width 0.4s ease-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes transpTextOpacity {
+  0% {
+    color: $bg-color;
+  }
+  100% {
+    color: transparent;
+  }
+}
+
+div .nav {
+  position: fixed;
+  background-color: #3a3838;
+  width: 99%;
+  min-height: 3.5em;
+  border-radius: 1em;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  @include bshadow1();
+}
+
+div .nav-home {
+  display: flex;
+  align-items: center;
+
+  margin-left: 1.1em;
+
+  animation: slideInFromLeft 0.6s ease-out;
+  @include dynamic-lift-effect();
+}
+
+.nav-title {
+  @include text-logo-colors-gradient();
+  @include dynamic-underline-effect(background-image, $logo-colors-gradient);
+
+  font-weight: 630;
+  margin-left: 0.4em;
+  font-size: 1.6em;
+
+  animation: transpTextOpacity 0.8s ease-out;
+}
+
+.nav-logo {
+  max-width: 2.2em;
+  max-height: 2.2em;
+  overflow: hidden;
+
+  @include dshadow1();
+}
+
+.nav-links {
+  display: flex;
+  margin-left: auto;
+  margin-right: 1.2em;
+  align-items: center;
+  gap: 1em;
+}
+
+.nav-link {
+  @include dynamic-lift-effect();
+  @include dynamic-underline-effect(background-image, $nav-link-underline);
+  color: $nav-link-color;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.nav-spacer {
+  min-height: 4em;
+}
+
+.hook-main {
+  
+}
