@@ -1,0 +1,126 @@
+// Main SCSS file for the project
+
+$bg-color: #242424;
+$bg-transp-gradient: linear-gradient(15deg, $bg-color 0%, $bg-color 100%);
+
+$logo-color-0: #3fb687;
+$logo-color-1: #b2c6e6;
+$logo-colors-gradient: linear-gradient(15deg, $logo-color-0 0%, $logo-color-1 100%);
+
+$nav-bg-color : #3a3838;
+$nav-link-color: rgb(237, 239, 247);
+$nav-link-underline: linear-gradient(15deg, $nav-link-color 0%, $nav-link-color 100%);
+
+$hooks-gradient: linear-gradient(15deg, #0ee08c 0%, #7eb0f1 100%);
+
+@mixin bshadow1 {
+  box-shadow: 5px 5px 10px #07070770;
+}
+
+@mixin tshadow1 {
+  text-shadow: 2px 2px 4px $nav-bg-color;
+}
+
+@mixin dshadow1 {
+  filter: drop-shadow(8px 8px 5px #0707071a);
+}
+
+@mixin text-colors-gradient($bgProperty, $bgColor) {
+    #{$bgProperty}: $bgColor;
+    background-clip: text;
+    text-decoration: none;
+    color: transparent;
+}
+
+@mixin text-logo-colors-gradient() {
+  @include text-colors-gradient(background-image, $logo-colors-gradient);
+}
+
+@mixin hooks-logo-colors-gradient() {
+  @include text-colors-gradient(background-image, $hooks-gradient);
+}
+
+@mixin dynamic-lift-effect {
+  transition: transform 0.4s ease-out;
+  transform: translateY(0);
+
+  &:hover {
+    transform: translateY(-0.15em);
+  }
+}
+
+@mixin dynamic-underline-effect($bgProperty, $bgColor) {
+  & {
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    #{$bgProperty}: $bgColor;
+    opacity: 0;
+    transition: width 0.4s ease-out, opacity 0.4s ease-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translate(0, -50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translate(50%, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translate(0, 50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes transpTextOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

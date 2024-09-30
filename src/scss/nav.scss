@@ -1,0 +1,75 @@
+@use 'common' as *;
+
+@keyframes transpTextBgOpacity {
+  0% {
+    color: $bg-color;
+  }
+  100% {
+    color: transparent;
+  }
+}
+
+div .nav {
+  position: fixed;
+  background-color: $nav-bg-color;
+  width: 99%;
+  min-height: 3.5em;
+  border-radius: 1em;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  @include bshadow1();
+}
+
+div .nav-home {
+  display: flex;
+  align-items: center;
+
+  margin-left: 1.1em;
+
+  animation: slideInFromLeft 0.6s ease-out;
+  @include dynamic-lift-effect();
+}
+
+.nav-title {
+  font-weight: 630;
+  margin-left: 0.4em;
+  font-size: 1.6em;
+
+  animation: transpTextOpacity 0.8s ease-out;
+
+  @include text-logo-colors-gradient();
+  @include dynamic-underline-effect(background-image, $logo-colors-gradient);
+}
+
+.nav-logo {
+  max-width: 2.2em;
+  max-height: 2.2em;
+  overflow: hidden;
+
+  @include dshadow1();
+}
+
+.nav-links {
+  display: flex;
+  margin-left: auto;
+  margin-right: 1.2em;
+  align-items: center;
+  gap: 1em;
+}
+
+.nav-link {
+  color: $nav-link-color;
+  text-decoration: none;
+  font-size: 1.2em;
+
+  @include dynamic-lift-effect();
+  @include dynamic-underline-effect(background-image, $nav-link-underline);
+}
+
+.nav-spacer {
+  min-height: 6em;
+}
