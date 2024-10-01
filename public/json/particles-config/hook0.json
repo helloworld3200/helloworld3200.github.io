@@ -1,5 +1,4 @@
 {
-  "id": "hook-particles",
   "particles": {
     "number": {
       "value": 45,
@@ -106,6 +105,5 @@
         "particles_nb": 2
       }
     }
-  },
-  "retina_detect": true
+  }
 }

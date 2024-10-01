@@ -1,8 +1,11 @@
-import { tsParticles } from "@tsparticles/engine";
+import { ILoadParams, tsParticles } from "@tsparticles/engine";
 import { loadFull } from "tsparticles";
 
 const tsParticlesID = "hook-particles";
+const tsParticlesConfigPath = "../public/json/particles-config/hook1.json";
 
+// OLD OPTIONS CODE
+/*
 const options = {
     background: {
         color: "#000000",
@@ -25,16 +28,21 @@ const options = {
             type: "circle",
         },
     },
-};
+};*/
 
-async function particlesMain() {
+async function particlesSetup() {
+    const optionsFile = await fetch(tsParticlesConfigPath);
+    const options = await optionsFile.json();
+    particlesMain(options);
+}
+
+async function particlesMain(options) {
     await loadFull(tsParticles);
 
+    console.log(options);
+
     tsParticles
-        .load({
-            id: tsParticlesID, 
-            options: options
-        })
+        .load({id: tsParticlesID, options: options})
         .then(container => {
             if (container) {
                 console.log(`callback - tsparticles config loaded on ${String(container.id)}`);
@@ -55,4 +63,4 @@ async function particlesMain() {
     }
 };
 
-particlesMain();
+particlesSetup();
