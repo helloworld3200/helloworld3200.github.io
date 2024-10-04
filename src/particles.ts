@@ -1,8 +1,12 @@
 import { ILoadParams, tsParticles } from "@tsparticles/engine";
 import { loadFull } from "tsparticles";
+import { showEditor } from "@tsparticles/editor";
+import { initPjs } from "@tsparticles/particles.js";
+
+const { particlesJS } = initPjs(tsParticles);
 
 const tsParticlesID = "hook-particles";
-const tsParticlesConfigPath = "../public/json/particles-config/hook1.json";
+const tsParticlesConfigPath = "../json/particles-config/hook1.json";
 
 // OLD OPTIONS CODE
 /*

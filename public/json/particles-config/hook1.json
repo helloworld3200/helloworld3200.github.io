@@ -1,11 +1,10 @@
 {
-    "id": "hook-particles",
     "background": {
         "color": "#242424"
     },
     "particles": {
         "number": {
-            "value": 100
+            "value": 30
         },
         "links": {
             "distance": 150,
@@ -18,7 +17,29 @@
             "value": 1
         },
         "shape": {
-            "type": "circle"
-        }
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": 5
+            },
+            "image": {
+              "src": "img/github.svg",
+              "width": 100,
+              "height": 100
+            }
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          }
     }
 }
