@@ -1,3 +1,5 @@
+// Migrating to particles.js so we don't need to use this anymore
+
 import { ILoadParams, tsParticles } from "@tsparticles/engine";
 import { loadFull } from "tsparticles";
 import { showEditor } from "@tsparticles/editor";

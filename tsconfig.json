@@ -18,7 +18,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["node"]
+    "types": ["node"],
+
+    "typeRoots": ["./node_modules/@types", "./src/decl"]
   },
-  "include": ["src"]
+  "include": ["src/**/*", "src/decl/globals.d.ts"]
 }
