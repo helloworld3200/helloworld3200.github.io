@@ -1,7 +1,8 @@
 // Main SCSS file for the project
 
 $bg-color: #242424;
-$bg-transp-gradient: linear-gradient(15deg, $bg-color 0%, $bg-color 100%);
+$bg-transp-color: #24242400;
+$bg-transp-gradient: linear-gradient(180deg, $bg-transp-color 0%, $bg-color 100%);
 
 $logo-color-0: #3fb687;
 $logo-color-1: #b2c6e6;
@@ -12,6 +13,10 @@ $nav-link-color: rgb(237, 239, 247);
 $nav-link-underline: linear-gradient(15deg, $nav-link-color 0%, $nav-link-color 100%);
 
 $hooks-gradient: linear-gradient(15deg, #0ee08c 0%, #7eb0f1 100%);
+$hooks-gradient-reversed: linear-gradient(345deg, #0ee08c0e 0%, #7eb0f1 100%);
+
+$hook-bg-color: #0f0f0f;
+$hook-bg-gradient: linear-gradient(15deg, $hook-bg-color 0%, $bg-color 60%);
 
 @mixin bshadow1 {
   box-shadow: 5px 5px 10px #07070770;
@@ -69,6 +74,29 @@ $hooks-gradient: linear-gradient(15deg, #0ee08c 0%, #7eb0f1 100%);
   &:hover::after {
     width: 100%;
     opacity: 1;
+  }
+}
+
+@mixin fade-bottom-border($height: 30px) {
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2;
+    height: $height;
+    background-image: $bg-transp-gradient;
+    opacity: 0.5;
+  }
+}
+
+@keyframes reverseHookGradient {
+  0% {
+    background-image: $hooks-gradient;
+  }
+  100% {
+    background-image: $hooks-gradient-reversed;
   }
 }
 
