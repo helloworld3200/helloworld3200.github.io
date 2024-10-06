@@ -13,10 +13,10 @@ $nav-link-color: rgb(237, 239, 247);
 $nav-link-underline: linear-gradient(15deg, $nav-link-color 0%, $nav-link-color 100%);
 
 $hooks-gradient: linear-gradient(15deg, #0ee08c 0%, #7eb0f1 100%);
-$hooks-gradient-reversed: linear-gradient(345deg, #0ee08c0e 0%, #7eb0f1 100%);
+$hooks-gradient-reversed: linear-gradient(345deg, #2aa172 0%, #667c99 100%);
 
 $hook-bg-color: #0f0f0f;
-$hook-bg-gradient: linear-gradient(15deg, $hook-bg-color 0%, $bg-color 60%);
+$hook-bg-gradient: linear-gradient(15deg, $hook-bg-color 0%, $bg-color 70%);
 
 @mixin bshadow1 {
   box-shadow: 5px 5px 10px #07070770;
