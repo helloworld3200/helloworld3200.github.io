@@ -24,15 +24,18 @@ div .nav {
   align-items: center;
 
   overflow: hidden;
+  z-index: 50;
 
   @include bshadow1();
 }
 
-div .nav-home {
+.nav-home {
   display: flex;
   align-items: center;
 
-  margin-left: 1.1em;
+  margin-left: 0.9em;
+
+  position: fixed;
 
   animation: slideInFromLeft 0.6s ease-out;
   @include dynamic-lift-effect();
@@ -47,6 +50,11 @@ div .nav-home {
 
   @include text-logo-colors-gradient();
   @include dynamic-underline-effect(background-image, $logo-colors-gradient);
+}
+
+.nav-logo-div {
+  display: flex;
+  align-items: center;
 }
 
 .nav-logo {

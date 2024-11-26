@@ -1,5 +1,7 @@
 // Main SCSS file for the project
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
 $bg-color: #242424;
 $bg-transp-color: #24242400;
 $bg-transp-gradient: linear-gradient(180deg, $bg-transp-color 0%, $bg-color 100%);
@@ -150,5 +152,14 @@ $hook-bg-gradient: linear-gradient(15deg, $hook-bg-color 0%, $bg-color 70%);
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
   }
 }

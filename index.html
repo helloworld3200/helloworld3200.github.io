@@ -19,7 +19,9 @@
     <div id="app">
       <div class="nav">
         <div class="nav-home">
-          <img src="/favicon/android-chrome-192x192.png" alt="helloworld3200" class="nav-logo" />
+          <div class="nav-logo-div">
+            <a href="/"><img src="/favicon/android-chrome-192x192.png" alt="helloworld3200" class="nav-logo" /></a>
+          </div>
           <a href="/" class="nav-title">helloworld3200</a>
         </div>
         <div class="nav-links">
@@ -29,25 +31,80 @@
       </div>
       <div id="hook-jsparticles" class="hook-particles"></div>
       <div class="hook-main">
-        <img src="/favicon/android-chrome-192x192.png" alt="helloworld3200" class="hook-image" />
+        <img src="/favicon/hd-505x505.png" alt="helloworld3200" class="hook-image" />
         <!--<img src="/favicon/android-chrome-192x192.png" alt="helloworld3200" class="hook-image-shadow" />-->
         <div class="hook-rtext">
           <div class="hook-prefix">
             Hi there, I'm
           </div>
           <div class="hook-name">
-            <div class="hook-name-shadow">
-              helloworld3200
-            </div>
             helloworld3200
           </div>
+          <div class="hook-name-main">
+            helloworld3200
+          </div>
+        </div>
+      </div>
+      <div class="hook-carousel">
+        <div class="hook-carousel-prefix">
+          I'm a 
+        </div>
+        <div id="carousel" class="hook-carousel-imgs">
+          <!--This will be autofilled with TS on page load-->
+          <!--<img src="/my-langs-imgs/cpp.png" class="hook-carousel-img scroll1">-->
+        </div>
+        <div class="hook-carousel-suffix">
+          programmer
+        </div>
+        <div class="hook-carousel-join">
+          &&
+        </div>
+        <div class="hook-carousel-suffix">
+          student in the UK
+        </div>
+      </div>
+      <div class="experience-stats">
+        <span class="experience-stats-title">
+          My Experience
+        </span>
+        <div class="experience-stats-list">
+          <div class="experience-stats-item">
+            <span class="experience-stats-item-prefix" id="exp-stats-years">
+              <!-- This will be dynamically autofilled by JS upon page load -->
+            </span>
+            <span class="experience-stats-item-suffix">
+              years of experience
+            </span>
+        </div>
+        <div class="experience-stats-item">
+          <span class="experience-stats-item-prefix" id="exp-stats-langs">
+            <!-- This will be dynamically autofilled by JS upon page load -->
+          </span>
+          <span class="experience-stats-item-suffix">
+            programming languages
+          </span>
+        </div>
+        <div class="experience-stats-item">
+          <span class="experience-stats-item-prefix" id="exp-stats-technologies">
+            <!-- This will be dynamically autofilled by JS upon page load -->
+          </span>
+          <span class="experience-stats-item-suffix">
+            APIs, frameworks, and technologies
+          </span>
+        </div>
+        <div class="experience-stats-item">
+          <span class="experience-stats-item-prefix" id="exp-stats-projects">
+            <!-- This will be dynamically autofilled by JS upon page load -->
+          </span>
+          <span class="experience-stats-item-suffix">
+            solo real-world projects with 1000+ lines of code
+          </span>
         </div>
       </div>
     </div>
     <div id="megaline-prod-check"></div>
     <script type="module" src="/src/includes/particlesjs/particles.js"></script>
-    <script type="module" src="/src/main.ts"></script>
-    <script type="module" src="/src/scss-imports.ts"></script>
+    <script type="module" src="/src/index.ts"></script>
     <script type="module" src="/src/jsparticles.ts"></script>
   </body>
 </html>
