@@ -3,6 +3,7 @@ import "./scss/main.scss";
 import "./scss/nav.scss";
 import "./scss/hook.scss";
 import "./scss/experience.scss";
+import "./scss/misc-homepage.scss";
 
 // JS Sleep function
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -52,7 +53,7 @@ class FocusedImages {
         let currentIndex = trueMod(index, carouselMax);
         let nextIndex = trueMod(index + 1, carouselMax);
         let lastIndex = trueMod(index - 1, carouselMax);
-        console.log("Indexes at ", index, "are", currentIndex, nextIndex, lastIndex);
+        //console.log("Indexes at ", index, "are", currentIndex, nextIndex, lastIndex);
 
         this.current = imgs[currentIndex];
         this.next = imgs[nextIndex];
@@ -132,7 +133,7 @@ function main () {
     setupCarousel();
     setupExperience();
 
-    console.log("Hello, World! Index page loaded.");
+    console.log("🚀 Hello, World! Index page loaded.");
 }
 
 main();

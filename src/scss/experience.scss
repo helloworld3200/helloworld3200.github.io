@@ -7,6 +7,43 @@
     flex-direction: column;
     gap: 2em;
 
-    margin-top: 8em;
+    align-items: center;
+
+    margin-top: 8vw;
     margin-left: 3em;
+}
+
+.experience-stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0em;
+}
+
+.experience-stats-item-prefix {
+    font-size: 5em;
+    font-weight: 500;
+    line-height: 1em;
+    height: 1em;
+    margin-right: 1em;
+}
+
+.experience-stats-item-suffix {
+    font-weight: 200;
+    font-size: 3em;
+}
+
+.experience-stats-item-prefix-0 {
+    color: #e92929;
+}
+
+.experience-stats-item-prefix-1 {
+    color: #29a3e9;
+}
+
+.experience-stats-item-prefix-2 {
+    color: #48ad59;
+}
+
+.experience-stats-item-prefix-3 {
+    color: #b329e9;
 }

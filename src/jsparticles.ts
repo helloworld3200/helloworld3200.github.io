@@ -11,4 +11,9 @@ function jsParticlesMain () {
     particlesJS.load(jsParticlesID, jsParticlesConfigPath, jsParticlesCallback);
 }
 
-jsParticlesMain();
+function jsParticlesSetup() {
+    jsParticlesMain();
+    console.log("🚀 Hello, World! JSParticles setup complete.");
+}
+
+jsParticlesSetup();

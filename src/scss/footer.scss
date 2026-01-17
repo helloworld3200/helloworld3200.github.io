@@ -1,0 +1,43 @@
+// Footer styles
+
+@use 'common' as *;
+
+.footer {
+    background-color: #3b3b3b;
+    min-height: 2.5em;
+    display: flex;
+    padding-top: 0.8em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.2em;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
+    font-size: 1.2em;
+    color: #bebebe;
+}
+
+.footer-copyright {
+    @include text-logo-colors-gradient();
+    font-weight: 630;
+    font-size: 1.5em;
+    line-height: 1em;
+    height: 1.1em;
+}
+
+.footer-by {
+    display: flex;
+    justify-content: top;
+    gap: 0.6em;
+    line-height: 1em;
+    height: 1.1em;
+    font-weight: 600;
+}
+
+.footer-prefix {
+    min-height: 1em;
+    min-width: 100%;
+    margin-top: 3vw;
+
+    background-image: $logo-colors-gradient;
+}

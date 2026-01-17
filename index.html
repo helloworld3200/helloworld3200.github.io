@@ -25,10 +25,11 @@
           <a href="/" class="nav-title">helloworld3200</a>
         </div>
         <div class="nav-links">
-          <a href="/about" class="nav-link">About</a>
-          <a href="/contact" class="nav-link">Contact</a>
+          <a href="/#about" class="nav-link">About</a>
+          <a href="/#contact" class="nav-link">Contact</a>
         </div>
       </div>
+
       <div id="hook-jsparticles" class="hook-particles"></div>
       <div class="hook-main">
         <img src="/favicon/hd-505x505.png" alt="helloworld3200" class="hook-image" />
@@ -45,6 +46,7 @@
           </div>
         </div>
       </div>
+
       <div class="hook-carousel">
         <div class="hook-carousel-prefix">
           I'm a 
@@ -63,13 +65,14 @@
           student in the UK
         </div>
       </div>
+
       <div class="experience-stats">
-        <span class="experience-stats-title">
+        <span class="section-title">
           My Experience
         </span>
         <div class="experience-stats-list">
           <div class="experience-stats-item">
-            <span class="experience-stats-item-prefix" id="exp-stats-years">
+            <span class="experience-stats-item-prefix experience-stats-item-prefix-0" id="exp-stats-years">
               <!-- This will be dynamically autofilled by JS upon page load -->
             </span>
             <span class="experience-stats-item-suffix">
@@ -77,7 +80,7 @@
             </span>
         </div>
         <div class="experience-stats-item">
-          <span class="experience-stats-item-prefix" id="exp-stats-langs">
+          <span class="experience-stats-item-prefix experience-stats-item-prefix-1" id="exp-stats-langs">
             <!-- This will be dynamically autofilled by JS upon page load -->
           </span>
           <span class="experience-stats-item-suffix">
@@ -85,7 +88,7 @@
           </span>
         </div>
         <div class="experience-stats-item">
-          <span class="experience-stats-item-prefix" id="exp-stats-technologies">
+          <span class="experience-stats-item-prefix experience-stats-item-prefix-2" id="exp-stats-technologies">
             <!-- This will be dynamically autofilled by JS upon page load -->
           </span>
           <span class="experience-stats-item-suffix">
@@ -93,18 +96,55 @@
           </span>
         </div>
         <div class="experience-stats-item">
-          <span class="experience-stats-item-prefix" id="exp-stats-projects">
+          <span class="experience-stats-item-prefix experience-stats-item-prefix-3" id="exp-stats-projects">
             <!-- This will be dynamically autofilled by JS upon page load -->
           </span>
           <span class="experience-stats-item-suffix">
-            solo real-world projects with 1000+ lines of code
+            solo real-world projects
           </span>
         </div>
+        </div>
       </div>
+
+      <!-- TODO: About section -->
+      <div id="about" class="standard-section">
+        <div class="section-title">About Me</div>
+        <div class="about-main">
+          <div class="about-text">
+
+          </div>
+        </div>
+      </div>
+      
+      <div id="contact" class="contact">
+        <div class="section-title">Contact</div>
+        <div class="contact-main">
+          <a class="contact-github"></a>
+          <a class="contact-twitter-x"></a>
+          <a class="contact-email"></a>
+        </div>
+      </div>
+
+      <div class="footer-prefix"></div>
+      
+      <footer class="footer">
+        <div class="footer-by">
+          <div>by </div>
+          <div class="footer-copyright">
+            helloworld3200
+          </div>
+        </div>
+          <!-- Year will be autofilled on page load. Fallback is 2025. -->
+        <div class="footer-year" id="footer-year">© Copyright 2025. All rights reserved.</div>
+        <!-- TODO: Add more contact links n stuff to the footer -->
+      </footer>
+
+      <div id="megaline-prod-check"></div>
+
+      <script type="module" src="/src/includes/particlesjs/particles.js"></script>
+      <script type="module" src="/src/index.ts"></script>
+      <script type="module" src="/src/jsparticles.ts"></script>
+      <script type="module" src="/src/footer.ts"></script>
     </div>
-    <div id="megaline-prod-check"></div>
-    <script type="module" src="/src/includes/particlesjs/particles.js"></script>
-    <script type="module" src="/src/index.ts"></script>
-    <script type="module" src="/src/jsparticles.ts"></script>
   </body>
 </html>

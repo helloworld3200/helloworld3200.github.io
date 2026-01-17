@@ -19,3 +19,18 @@ body {
   margin: 0;
   margin-right: 0;
 }
+
+.section-title {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.standard-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin-top: 1vw;
+  align-items: center;
+
+  border-top: $std-section-divider;
+}

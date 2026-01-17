@@ -149,6 +149,10 @@
   border-bottom: 3px solid #2e2e2e;
 }
 
+.hook-fancy-wave {
+  transform: scaleY(0.5);
+}
+
 .hook-carousel {
   display: flex;
   flex-direction: row;
