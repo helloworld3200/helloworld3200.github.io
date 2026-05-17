@@ -1,7 +1,9 @@
 import type { Route } from "./+types/home";
 
 function Name() {
-  return (<h1 className="text-8xl font-semibold text-center tracking-wide">
+  return (<h1 className="text-9xl font-semibold text-center tracking-normal 
+  bg-linear-20 from-blue-500 via-purple-500 to-blue-500 
+  bg-size-[200%] text-transparent bg-clip-text animate-gradient">
     helloworld3200
   </h1>)
 }
