@@ -8,17 +8,23 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --animate-gradient: gradient 10s linear infinite;
+  --animate-hover-shimmer: hover-shimmer 1.5s linear infinite;
 
   @keyframes gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
+
+  @keyframes hover-shimmer {
+    0% { background-position: -220% 0; }
+    100% { background-position: 220% 0; }
+  }
 }
 
 html,
 body {
-  @apply bg-white dark:bg-slate-950;
+  @apply bg-white dark:bg-linear-to-bl from-slate-900 to-olive-950;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
