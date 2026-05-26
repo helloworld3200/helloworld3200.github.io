@@ -10,8 +10,9 @@ function Name() {
   // 3. overall "frosted glass" look achieved through edge outline which is just a slightly translucent + blurred background
 
   return (<h1 className="text-9xl font-semibold text-center tracking-tight 
-  bg-linear-20 from-blue-500 via-purple-500 to-blue-500 
-  bg-size-[200%] text-transparent bg-clip-text animate-gradient">
+  bg-linear-20 from-indigo-300 via-teal-700 to-lime-400 
+  bg-size-[200%] text-transparent bg-clip-text bg-bottom animate-gradient
+  hover:animate-none hover:bg-bottom-right transition-[background-position] duration-800 ease-in-out">
     helloworld3200
   </h1>)
 }
