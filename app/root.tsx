@@ -10,6 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import { Footer } from "./common/footer";
+import { NAME } from "./common/consts";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -26,7 +27,7 @@ export const links: Route.LinksFunction = () => [
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "helloworld3200's portfolio" },
+    { title: `${NAME}'s portfolio` },
     { name: "description", content: "Welcome to my portfolio! WIP." },
   ];
 }
