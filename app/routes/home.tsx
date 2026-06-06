@@ -22,20 +22,31 @@ function Name() {
 
 function Tagline() {
   return (<span className="
-  text-3xl font-normal text-center tracking-wide
+  text-4xl font-normal text-center tracking-wide
   ">
-    Developer, student, creative.
+    Developer, student, creative
   </span>)
 }
 
+function ContactLink() {
+  return (
+    <div className="flex flex-row gap-3 items-center">
+      
+      <a className="text-3xl font-normal tracking-normal" href="https://github.com" target="_blank">
+        GitHub
+      </a>
+    </div>
+  )
+}
+
 function ContactBar() {
-  return (<div>
-    
+  return (<div className="flex flex-row gap-5 items-center mt-10">
+    <ContactLink />
   </div>)
 }
 
-function PlaceholderHero() {
-  return (<div className="flex flex-col items-center h-screen gap-5 p-50">
+function Hero() {
+  return (<div className="flex flex-col items-center h-screen gap-5 py-55 px-10">
     <Name />
     <Tagline />
     <ContactBar />
@@ -44,6 +55,6 @@ function PlaceholderHero() {
 
 export default function Home() {
   return (<>
-    <PlaceholderHero />
+    <Hero />
   </>);
 }
