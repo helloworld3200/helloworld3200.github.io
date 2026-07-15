@@ -1,5 +1,8 @@
-import { NAME } from "~/common/consts";
+import { GH_LINK, NAME } from "~/common/consts";
 import type { Route } from "./+types/home";
+import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
+import GHLogo from "~/svg/GHLogo.svg?react";
+import type { ElementType } from "react";
 
 // Maybe make it so that each element fades in?
 
@@ -28,20 +31,79 @@ function Tagline() {
   </span>)
 }
 
-function ContactLink() {
-  return (
-    <div className="flex flex-row gap-3 items-center">
+// first prop is content and second is a function which can be set to open a new tab, open a popup, etc
+function ContactLink(
+  { content, 
+    go, 
+    StandbyIcon,
+    ReadyIcon = ArrowUpRight,
+  }: { 
+    content: string; 
+    go: string | (() => void);
+    StandbyIcon: ElementType<{ className?: string; width?: number; height?: number }>;
+    ReadyIcon?: ElementType<{ className?: string; size?: number }>;
+  }) {
+  // upon actually looking at web docs
+  // it looks like window.open has some weird quirks on certain browsers
+  // but we still need multifunctions here for both opening to new tab + just showing some different UI on the current page
+  // so the plan is
+  // make it so that go accepts either type of string or a function
+  // if its a string then return an anchor element with that string set to its href
+  // if not then return a button element with the onClick set to that function
+  
+  const iconSize = 42;
+  const largeIconSize = 0.7 * iconSize;
+
+  //<StandbyIcon width={iconSize} height={iconSize} className="m-3" />
+  //<ReadyIcon size={iconSize} />
+
+  // StandbyIcon displayed normally; ReadyIcon display on hover.
+
+  function InternalContact() {
+    return (<>
+      <div className="relative h-10 w-10 overflow-hidden">
+        <StandbyIcon
+          width={largeIconSize}
+          height={largeIconSize}
+          className="absolute inset-0 m-auto transition-all duration-(--hover-anim-duration) ease-in-out 
+          group-hover:translate-x-2 group-hover:-translate-y-2 opacity-100 group-hover:opacity-50"
+        />
+        <ReadyIcon
+          size={iconSize}
+          className="absolute inset-0 m-auto -translate-x-2 translate-y-2 opacity-0 transition-all duration-(--hover-anim-duration) ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+        />
+      </div>
+
+      <span>{content}</span>
       
-      <a className="text-3xl font-medium tracking-normal" href="https://github.com" target="_blank">
-        GitHub
-      </a>
+      <span className="absolute left-0 -bottom-2 h-0.5 w-0 bg-current transition-all duration-(--hover-anim-duration) group-hover:w-full"></span>
+    </>)
+  }
+
+  const useAnchor = typeof go === "string";
+  
+  const contactClass = "flex flex-row gap-0 items-center text-3xl font-medium tracking-normal relative px-2 cursor-pointer";
+
+  return (
+    <div className="group">
+      <div className="transition-transform duration-300 group-hover:-translate-y-3">
+        {useAnchor ? (
+          <a href={go} target="_blank" className={contactClass}>
+            <InternalContact />
+          </a>
+        ) : (
+          <button className={contactClass} onClick={go}>
+            <InternalContact />
+          </button>
+        )}
+      </div>
     </div>
   )
 }
 
 function ContactBar() {
-  return (<div className="flex flex-row gap-5 items-center mt-25">
-    <ContactLink />
+  return (<div className="flex flex-row gap-5 items-center mt-20">
+    <ContactLink content="GitHub" go={GH_LINK} StandbyIcon={GHLogo} />
   </div>)
 }
 
