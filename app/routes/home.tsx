@@ -52,7 +52,10 @@ function ContactLink(
   // if not then return a button element with the onClick set to that function
   
   const iconSize = 42;
-  const largeIconSize = 0.7 * iconSize;
+
+  // scaled by 0.7 because the ReadyIcon already has padding, so we scale down StandbyIcon which DOESNT have that same padding to match visually.
+  const paddingScalar = 0.7;
+  const largeIconSize = paddingScalar * iconSize;
 
   //<StandbyIcon width={iconSize} height={iconSize} className="m-3" />
   //<ReadyIcon size={iconSize} />
@@ -61,16 +64,16 @@ function ContactLink(
 
   function InternalContact() {
     return (<>
-      <div className="relative h-10 w-10 overflow-hidden">
+      <div className="relative h-10 w-10 overflow-hidden border border-transparent rounded-2xl">
         <StandbyIcon
           width={largeIconSize}
           height={largeIconSize}
           className="absolute inset-0 m-auto transition-all duration-(--hover-anim-duration) ease-in-out 
-          group-hover:translate-x-2 group-hover:-translate-y-2 opacity-100 group-hover:opacity-50"
+          group-hover:translate-x-(--icon-dist) group-hover:-translate-y-(--icon-dist) opacity-100 group-hover:opacity-50"
         />
         <ReadyIcon
           size={iconSize}
-          className="absolute inset-0 m-auto -translate-x-2 translate-y-2 opacity-0 transition-all duration-(--hover-anim-duration) ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+          className="absolute inset-0 m-auto -translate-x-(--icon-dist) translate-y-(--icon-dist) opacity-0 transition-all duration-(--hover-anim-duration) ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
         />
       </div>
 

@@ -12,6 +12,8 @@
 
   --hover-anim-duration: 300ms;
 
+  --icon-dist: 42px;
+
   /* would be this in regular TW: bg-linear-20 from-indigo-300 via-teal-700 to-lime-400  */
   --pretty-gradient: linear-gradient(20deg, var(--color-indigo-300), var(--color-teal-700), var(--color-lime-400));
 
@@ -42,7 +44,7 @@
 
 html,
 body {
-  @apply bg-white text-stdfore dark:bg-linear-to-bl from-slate-900 to-olive-950;
+  @apply bg-white text-black dark:text-stdfore dark:bg-linear-to-bl from-slate-900 to-olive-950;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
