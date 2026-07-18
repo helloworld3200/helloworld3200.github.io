@@ -1,5 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/*
+  All bespoke styling and effects for the site are custom made with tailwind
+  without any external helper frameworks so that I can create the best possible look.
+
+  Main app.css file applied across whole site, although some styling config is
+  separated into other files for modularity so that it's easier to manage.
+  e.g. the complex swoosh-icon transition system has been put into css/swoosh-icon.css
+*/
+
 @import "tailwindcss";
+
+@import "css/custom-fonts.css";
+@import "css/swoosh-icon.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -10,7 +21,8 @@
   --color-stdfore: var(--color-neutral-50);
   --color-stdfore-highlight: var(--color-neutral-400);
 
-  --hover-anim-duration: 300ms;
+  --hover-anim-duration-slow: 300ms;
+  --hover-anim-duration-fast: 100ms;
 
   --icon-dist: 42px;
 

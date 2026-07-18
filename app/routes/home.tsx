@@ -64,22 +64,28 @@ function ContactLink(
 
   function InternalContact() {
     return (<>
-      <div className="relative h-10 w-10 overflow-hidden border border-transparent rounded-2xl">
+      <div className="relative h-10 w-10 overflow-hidden [clip-path:url(#squircle)]">
         <StandbyIcon
           width={largeIconSize}
           height={largeIconSize}
-          className="absolute inset-0 m-auto transition-all duration-(--hover-anim-duration) ease-in-out 
-          group-hover:translate-x-(--icon-dist) group-hover:-translate-y-(--icon-dist) opacity-100 group-hover:opacity-50"
+          className="absolute inset-0 m-auto
+          opacity-100
+          transition-all duration-(--hover-anim-duration-slow) ease-in-out 
+          group-hover:translate-x-(--icon-dist) group-hover:-translate-y-(--icon-dist) group-hover:opacity-0"
         />
         <ReadyIcon
           size={iconSize}
-          className="absolute inset-0 m-auto -translate-x-(--icon-dist) translate-y-(--icon-dist) opacity-0 transition-all duration-(--hover-anim-duration) ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+          className="absolute inset-0 m-auto 
+          -translate-x-(--icon-dist) translate-y-(--icon-dist) 
+          opacity-0 
+          transition-all duration-(--hover-anim-duration-slow) ease-in-out 
+          group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
         />
       </div>
 
       <span>{content}</span>
       
-      <span className="absolute left-0 -bottom-2 h-0.5 w-0 bg-current transition-all duration-(--hover-anim-duration) group-hover:w-full"></span>
+      <span className="absolute left-0 -bottom-2 h-0.5 w-0 bg-current transition-all duration-(--hover-anim-duration-slow) group-hover:w-full"></span>
     </>)
   }
 

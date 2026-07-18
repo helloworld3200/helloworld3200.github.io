@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { Footer } from "./common/footer";
 import { NAME } from "./common/consts";
+import { SquircleShapePolyfill } from "./common/squircle";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -42,6 +43,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <SquircleShapePolyfill />
         {children}
         <Footer />
         <ScrollRestoration />
