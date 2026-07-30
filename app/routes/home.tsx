@@ -1,4 +1,4 @@
-import { GH_LINK, NAME } from "~/common/consts";
+import { GH_LINK, NAME, LARGE_ICON_SIZE, ICON_SIZE } from "~/common/consts";
 import type { Route } from "./+types/home";
 import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
 import GHLogo from "~/svg/GHLogo.svg?react";
@@ -14,7 +14,7 @@ function Name() {
   // 3. overall "frosted glass" look achieved through edge outline which is just a slightly translucent + blurred background
 
   return (<h1 className="
-  text-9xl font-semibold text-center tracking-tight
+  text-9xl font-semibold text-center tracking-tighter
   bg-(image:--pretty-gradient)
   bg-size-[200%] text-transparent bg-clip-text bg-bottom animate-gradient
   saturate-110 brightness-120
@@ -25,7 +25,7 @@ function Name() {
 
 function Tagline() {
   return (<span className="
-  text-4xl font-normal text-center tracking-wide
+  text-3xl font-normal text-center tracking-normal
   ">
     Developer, student, creative
   </span>)
@@ -50,36 +50,38 @@ function ContactLink(
   // make it so that go accepts either type of string or a function
   // if its a string then return an anchor element with that string set to its href
   // if not then return a button element with the onClick set to that function
-  
-  const iconSize = 42;
-
-  // scaled by 0.7 because the ReadyIcon already has padding, so we scale down StandbyIcon which DOESNT have that same padding to match visually.
-  const paddingScalar = 0.7;
-  const largeIconSize = paddingScalar * iconSize;
 
   //<StandbyIcon width={iconSize} height={iconSize} className="m-3" />
   //<ReadyIcon size={iconSize} />
 
   // StandbyIcon displayed normally; ReadyIcon display on hover.
 
+  // formerly clipped to [clip-path:url(#squircle)]
+  // it looked kinda weird but if we want to reimplement js pop that into the root div in InternalContact
+
   function InternalContact() {
     return (<>
-      <div className="relative h-10 w-10 overflow-hidden [clip-path:url(#squircle)]">
+      <div className="
+      relative h-10 w-10 overflow-hidden
+      *:absolute *:inset-0 *:m-auto
+      ">
         <StandbyIcon
-          width={largeIconSize}
-          height={largeIconSize}
-          className="absolute inset-0 m-auto
-          opacity-100
-          transition-all duration-(--hover-anim-duration-slow) ease-in-out 
-          group-hover:translate-x-(--icon-dist) group-hover:-translate-y-(--icon-dist) group-hover:opacity-0"
+          width={LARGE_ICON_SIZE}
+          height={LARGE_ICON_SIZE}
+          className="
+          opacity-100 group-hover:opacity-0
+          group-hover:translate-x-(--icon-dist) group-hover:-translate-y-(--icon-dist)
+
+          swoosh-away"
         />
         <ReadyIcon
-          size={iconSize}
-          className="absolute inset-0 m-auto 
-          -translate-x-(--icon-dist) translate-y-(--icon-dist) 
-          opacity-0 
-          transition-all duration-(--hover-anim-duration-slow) ease-in-out 
-          group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
+          size={ICON_SIZE}
+          className="
+          -translate-x-(--icon-dist) translate-y-(--icon-dist)
+          group-hover:translate-x-0 group-hover:translate-y-0
+          opacity-0 group-hover:opacity-100
+
+          swoosh-away"
         />
       </div>
 
@@ -91,7 +93,7 @@ function ContactLink(
 
   const useAnchor = typeof go === "string";
   
-  const contactClass = "flex flex-row gap-0 items-center text-3xl font-medium tracking-normal relative px-2 cursor-pointer";
+  const contactClass = "flex flex-row gap-1 items-center text-3xl font-medium tracking-normal relative px-2 cursor-pointer";
 
   return (
     <div className="group">
