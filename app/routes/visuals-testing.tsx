@@ -43,7 +43,10 @@ export default function VisualsTesting() {
     return (
         <>
             <div className="bg-(image:--dim-gradient)">
-                <GlobeTest1></GlobeTest1>
+                <GlobeTest1>
+                    
+                </GlobeTest1>
+                <h1>hello world</h1>
             </div>
         </>
     )
