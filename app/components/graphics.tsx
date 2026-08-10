@@ -1,7 +1,7 @@
 // Various high-end graphical effects to use sparingly! throughout the app.
 
 import { useRef, useState, useEffect, type PropsWithChildren } from "react";
-import * as THREE from 'three';
+import * as LegacyTHREE from 'three-legacy';
 
 // vanta imports go here!
 import VantaGlobeEffect from 'vanta/src/vanta.globe'
@@ -32,14 +32,31 @@ export const VANTA_PRESETS: Record<string, VantaEffectConfig> = {
     }
 };
 
-// General purpose vanta effect wrapper that plugs it into React
+/*
+TODO: Finish this instructions because it's pretty lengthy
+    General purpose vanta effect wrapper that plug-and-plays it into React
+
+    USAGE ADVICE:
+    - Insert child elements in a div element nested into this component.
+    - Put your styling for the 3D EFFECT (e.g. sizing) into the className of this component.
+    - Put your styling for your CHILD ELEMENTS into the className of the nested div.
+    - I recommend that your div has w-full and h-full as a base style so it fits the entire parent.
+
+    Example:
+
+    <VantaFX className="">
+
+    </VantaFX>
+
+    - See below for a longer explanation of why it's like this.
+*/
 export function VantaFX({
     effect,
-    className,
+    className = "",
     children
 }: PropsWithChildren<{
     effect: VantaEffectConfig,
-    className: string,
+    className?: string,
 }>) {
     const [effectBg, setEffectBg] = useState<typeof effect.setup | null>(null);
     const bgElementRef = useRef<HTMLDivElement>(null);
@@ -47,7 +64,9 @@ export function VantaFX({
     useEffect(() => {
         const vantaReadyArgs = {
             el: bgElementRef.current,
-            THREE: THREE,
+            // MUST use older threejs version to ensure compatability with this older library 
+            // (r134 specified in docs; breaking changes only happen >=r141; r140 installed here under three-legacy but check package.json to confirm!)
+            THREE: LegacyTHREE,
             ...effect.args
         }
 
@@ -56,6 +75,8 @@ export function VantaFX({
                 effect.setup(vantaReadyArgs)
             )
         }
+
+        //console.log("Applying VANTA effect:", effect.setup.name, "with args:", vantaReadyArgs);
 
         return () => {
             if (effectBg) { effectBg.destroy(); }
@@ -67,6 +88,9 @@ export function VantaFX({
     // it takes care of all the overlap/layering for you through its own internal styling!
     // so you can add css/tw directly into the div as though the canvas didn't exist.
     // no layout issues will happen whatsoever; no need to nest more divs into it.
+
+    // however: you should still wrap children in a div and apply styling to THAT div
+    // because the canvas element is a sibling element and can interfere with child styling.
 
     // however: do NOT remove the "redundant" PropsWithChildren in case layout issues DO arise later
     return (

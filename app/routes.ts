@@ -6,6 +6,7 @@ const routes = [
 ]
 
 // Development-only routes
+// TODO: Add a layout file here which displays debug info for the dev only pages
 if (import.meta.env.DEV) {
     routes.push(
         ...prefix("dev/", [

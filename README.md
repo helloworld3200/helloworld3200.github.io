@@ -1,6 +1,6 @@
 # [helloworld3200.github.io](helloworld3200.github.io)
 
-> It's my dev portfolio. Built to showcase my skills as a live example of what I can make. Hope you like it!
+> It's my dev portfolio. Built to showcase a live example of what I can make. Hope you like it!
 
 ![Actively Developed: Yes](https://img.shields.io/badge/actively_developed-yes-green?style=flat)
 ![Created: 2026](https://img.shields.io/badge/created-2026-blue?style=flat)
@@ -26,6 +26,7 @@ Why not check out the source code? It's clean and optimized, just like the site 
 2. **Secondary Backup** - hosted on Cloudflare Pages: []()
 
 ## Inspo
+
 - Fluid gradient text effect with moving colours in the hero was inspired by Animex's similarly animated hero text
 - Hyperlink design inspired by Polestar's website
 - Hero background gradient colours are meant to resemble a subtle, stylized sunrise emerging from a night sky (originally was going to be a full shader sky); inspired by unity's HDRP PBS
@@ -34,5 +35,6 @@ Why not check out the source code? It's clean and optimized, just like the site 
 - Various awwwwards winners
 
 ## TODOs
+
 - Add some kind of custom-made, hackable blog posting capability without an outside framework and minimal setup/overhead
 - More actual info about my experience & projects

@@ -12,5 +12,7 @@
 
 @import "tailwindcss";
 
+@import "css/theme.css";
+
 @import "css/swoosh-icon.css";
 @import "css/base.css";

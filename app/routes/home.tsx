@@ -1,8 +1,9 @@
 import { GH_LINK, NAME, LARGE_ICON_SIZE, ICON_SIZE } from "~/common/consts";
 import type { Route } from "./+types/home";
 import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
-import GHLogo from "~/svg/GHLogo.svg?react";
+import { SiGithub as GHLogo } from "@icons-pack/react-simple-icons";
 import type { ElementType } from "react";
+import { VANTA_PRESETS, VantaFX } from "~/components/graphics";
 
 // Maybe make it so that each element fades in?
 
@@ -14,7 +15,7 @@ function Name() {
   // 3. overall "frosted glass" look achieved through edge outline which is just a slightly translucent + blurred background
 
   return (<h1 className="
-  text-9xl font-semibold text-center tracking-tighter
+  text-8xl font-semibold text-center tracking-tighter
   bg-(image:--pretty-gradient)
   bg-size-[200%] text-transparent bg-clip-text bg-bottom animate-gradient
   saturate-110 brightness-120
@@ -118,11 +119,12 @@ function ContactBar() {
   </div>)
 }
 
-// Shooting stars background effect i found on some random streaming website that im copying
-// general idea:
-// trail element + star element duplicated many times
-// raw src code:
-/*
+/* 
+ Shooting stars background effect i found on some random streaming website that im copying
+ general idea:
+ trail element + star element duplicated many times
+ raw src code:
+
 shadow not needed?
 here it is just in case we do:  shadow-[0_0_0_1px_#ffffff10]
 inner star tailwind class:
@@ -144,33 +146,12 @@ animate-meteor keyframes animation:
     opacity: 0
 }
 */
-// TODO: implement this later but i want to finish the contacts bar first
-function Starry({ count = 2 }: { count?: number }) {
-  function Trail() {
-    return (<div>
-      
-    </div>)
-  }
-
-  function Star() {
-    return (<div>
-      <Trail />
-    </div>)
-  }
-
-  return (<div>
-    {Array.from({ length: count }).map((_, i) => (
-      <Star key={i} />
-    ))}
-  </div>)
-}
 
 // A few different iterations I had for the main hero design
 
 // 1. basic flat list of the components with a starry bg effect; pretty boring
 function HeroStyleFlat() {
   return (<div className="flex flex-col justify-center items-center h-screen gap-5 px-10">
-    <Starry />
     <Name />
     <Tagline />
     <ContactBar />
@@ -180,8 +161,19 @@ function HeroStyleFlat() {
 // 2. perfect. elegant, modern, intricate w/o being too busy.
 // vanta 3d effects, blended colours in the background, animated text, etc.
 function HeroStyleModern() {
-  return (<div>
-    
+  return (<div className="flex flex-col w-full">
+    <VantaFX effect={VANTA_PRESETS.GLOBE_HERO} className="
+      w-full h-screen bg-(image:--dim-gradient)
+    ">
+      <div className="
+        w-full h-full
+        flex flex-col px-20 py-20 gap-5 justify-start items-start
+      ">
+        <Name />
+        <Tagline />
+        <ContactBar />
+      </div>
+    </VantaFX>
   </div>)
 }
 
