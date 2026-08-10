@@ -1,7 +1,17 @@
-import { type RouteConfig, index, route } from "@react-router/dev/routes";
+import { type RouteConfig, index, prefix, route } from "@react-router/dev/routes";
 
-export default [
+// Base routes
+const routes = [
     index("routes/home.tsx"),
-    // this is what we call a "nobodys gonna know :D"
-    route("usethisrouteifyoudontlikeyourself1", "routes/visuals-testing.tsx")
-] satisfies RouteConfig;
+]
+
+// Development-only routes
+if (import.meta.env.DEV) {
+    routes.push(
+        ...prefix("dev/", [
+            route("visuals-testing", "routes/visuals-testing.tsx")
+        ])
+    )
+}
+
+export default routes satisfies RouteConfig;

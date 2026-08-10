@@ -165,7 +165,10 @@ function Starry({ count = 2 }: { count?: number }) {
   </div>)
 }
 
-function Hero() {
+// A few different iterations I had for the main hero design
+
+// 1. basic flat list of the components with a starry bg effect; pretty boring
+function HeroStyleFlat() {
   return (<div className="flex flex-col justify-center items-center h-screen gap-5 px-10">
     <Starry />
     <Name />
@@ -174,8 +177,16 @@ function Hero() {
   </div>);
 }
 
+// 2. perfect. elegant, modern, intricate w/o being too busy.
+// vanta 3d effects, blended colours in the background, animated text, etc.
+function HeroStyleModern() {
+  return (<div>
+    
+  </div>)
+}
+
 export default function Home() {
-  return (<>
-    <Hero />
-  </>);
+  return (<div>
+    <HeroStyleModern />
+  </div>);
 }

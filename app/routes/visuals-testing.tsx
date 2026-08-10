@@ -35,18 +35,17 @@ function GlobeTest1() {
     }, [globeBg]);
 
     return (
-        <div ref={bgElementRef} className="w-full h-screen" />
+        <div ref={bgElementRef} className="bg-(image:--dim-gradient) w-full h-screen flex items-center justify-center" >
+            <h1 className="text-2xl">hello world!</h1>
+        </div>
     )
 }
 
 export default function VisualsTesting() {
     return (
         <>
-            <div className="bg-(image:--dim-gradient)">
-                <GlobeTest1>
-                    
-                </GlobeTest1>
-                <h1>hello world</h1>
+            <div className="">
+                <GlobeTest1 />
             </div>
         </>
     )
