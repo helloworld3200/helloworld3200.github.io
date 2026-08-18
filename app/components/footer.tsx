@@ -1,4 +1,4 @@
-import { NAME } from "./consts";
+import { NAME } from "../common/consts";
 
 // Footer component
 const getYear = () => {

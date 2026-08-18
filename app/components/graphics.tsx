@@ -33,19 +33,19 @@ export const VANTA_PRESETS: Record<string, VantaEffectConfig> = {
 };
 
 /*
-TODO: Finish this instructions because it's pretty lengthy
     General purpose vanta effect wrapper that plug-and-plays it into React
 
     USAGE ADVICE:
     - Insert child elements in a div element nested into this component.
     - Put your styling for the 3D EFFECT (e.g. sizing) into the className of this component.
     - Put your styling for your CHILD ELEMENTS into the className of the nested div.
+
     - I recommend that your div has w-full and h-full as a base style so it fits the entire parent.
 
     Example:
 
-    <VantaFX className="">
-
+    <VantaFX className="w-full h-screen bg-black"> (sizing & styles for the 3d effect)
+        <div className="w-full h-full flex-col" /> (child element layout & styling)
     </VantaFX>
 
     - See below for a longer explanation of why it's like this.
@@ -85,14 +85,8 @@ export function VantaFX({
     }, [effectBg, effect]);
 
     // remember: all VantaEffect.setup() does is insert a 3d canvas into the referenced element.
-    // it takes care of all the overlap/layering for you through its own internal styling!
-    // so you can add css/tw directly into the div as though the canvas didn't exist.
-    // no layout issues will happen whatsoever; no need to nest more divs into it.
 
-    // however: you should still wrap children in a div and apply styling to THAT div
-    // because the canvas element is a sibling element and can interfere with child styling.
-
-    // however: do NOT remove the "redundant" PropsWithChildren in case layout issues DO arise later
+    // don't remove redundant {children} just in case we need to do some custom layout jank later
     return (
         <div className={className} ref={bgElementRef}>
             {children}

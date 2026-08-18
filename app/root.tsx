@@ -1,7 +1,6 @@
 import {
   isRouteErrorResponse,
   Links,
-  Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -9,43 +8,68 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { Footer } from "./common/footer";
-import { NAME } from "./common/consts";
-import { SquircleShapePolyfill } from "./common/squircle";
+import { Footer } from "./components/footer";
+import { FONT_SRC, NAME } from "./common/consts";
+import { type Empty } from "./common/helper";
+import { SquircleShapePolyfill } from "./components/squircle";
+import { DevInfo } from "./components/dev-inf";
+import type { PropsWithChildren } from "react";
 
-export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-];
+// Technically it's recommended to migrate from the React Router links() function
+// to directly using <link> tags in React 19+, but this works well anyway 
+// and will continue to work and is (imo) slightly easier to work with when 
+// you're doing programmatic link-building like I am here.
 
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: `${NAME}'s portfolio` },
-    { name: "description", content: "Welcome to my portfolio! WIP." },
+export const links: Route.LinksFunction = () => {
+  // Preconnect to Google Font servers as an optimization
+  const fontPreconnects = [
+    { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    {
+      rel: "preconnect",
+      href: "https://fonts.gstatic.com",
+      crossOrigin: "anonymous",
+    },
   ];
+
+  // Build font link tags from FONT_SRC array
+  const fontLinks = FONT_SRC.map((href) => ({ rel: "stylesheet", href }));
+
+  // Combine all needed links together
+  return [
+    ...fontPreconnects,
+    ...fontLinks
+  ]
+};
+
+function MetaInfo() {
+  return (<>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{`${NAME}'s portfolio`}</title>
+    <meta name="description" content="Welcome to my portfolio! WIP." />
+  </>)
 }
 
-export function Layout({ children }: { children: React.ReactNode }) {
+function Polyfills() {
+  return (<>
+    <SquircleShapePolyfill />
+  </>)
+}
+
+export function Layout({ children }: PropsWithChildren<Empty>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
+        <MetaInfo />
+        {/* Favicon handled statically via a favicon.ico file in /public dir */}
         <Links />
       </head>
-      <body>
-        <SquircleShapePolyfill />
+      <body className="dark">
+        <Polyfills />
         {children}
         <Footer />
+        { import.meta.env.DEV && <DevInfo /> }
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -53,35 +77,56 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
-  return <Outlet />;
-}
-
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
-  let stack: string | undefined;
-
-  if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
-  }
-
+// Dev mode error boundary
+function DevErrorBoundary({ message, stack }: { message: string; stack: string }) {
   return (
     <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
+      <h1> Oops - error encountered in dev mode! </h1>
+      <p>{message}</p>
         <pre className="w-full p-4 overflow-x-auto">
           <code>{stack}</code>
         </pre>
-      )}
+    </main>
+  )
+}
+
+// TODO: Finish implementing the upgraded error boundary
+function HTTPErrorBoundary({ status, details } : { status: string; details: string }) {
+  return (
+    <main className="flex flex-col py-16 px-16 h-screen">
+      <h3>{status}</h3>
+      <p>{details}</p>
     </main>
   );
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  let status = "Uh oh - unknown error!";
+  let details = "Please report! This isn't meant to happen.";
+
+  const isDevError = import.meta.env.DEV && error && error instanceof Error;
+  const GENERIC_ERR_STACK_MSG = "Error stack trace unknown!";
+
+  // Runs on 4XX/5XX errors. In prod this should ALWAYS be true!
+  // If for some reason it isn't - the default error message above will be shown.
+  // Curious to see how this works since we're deploying to Github Pages statically
+  // so will react router trim down ErrorBoundary to only ever render the 404 response? We'll see!
+  if (isRouteErrorResponse(error)) {
+    const is404 = error.status === 404;
+
+    status = error.status.toString();
+    
+    details = is404
+        ? "This page doesn't exist! Please check the URL and try again."
+        : error.statusText || details;
+  } else if (isDevError) {
+    // In dev mode, show the error message and stack trace
+    return <DevErrorBoundary message={error.message} stack={error.stack || GENERIC_ERR_STACK_MSG} />;
+  }
+
+  return <HTTPErrorBoundary status={status} details={details} />;
+}
+
+export default function App() {
+  return <Outlet />;
 }

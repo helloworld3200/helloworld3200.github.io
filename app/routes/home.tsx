@@ -177,8 +177,10 @@ function HeroStyleModern() {
   </div>)
 }
 
-export default function Home() {
+function Home() {
   return (<div>
     <HeroStyleModern />
   </div>);
 }
+
+export default Home;

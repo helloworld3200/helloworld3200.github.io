@@ -9,6 +9,7 @@
 @theme {
   --font-sans: "Montserrat", "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "Noto Sans Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
   --color-stdfore: var(--color-neutral-50);
   --color-stdfore-highlight: var(--color-neutral-400);

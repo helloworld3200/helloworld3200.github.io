@@ -1,0 +1,12 @@
+/* A collection of useful background effects */
+
+@utility striped-bg-* {
+    background-image: repeating-linear-gradient(
+        45deg,
+        --value(--color-*) 0,
+        --value(--color-*) 1px,
+        transparent 0,
+        transparent 50%
+    );
+    background-size: 10px 10px;
+}
