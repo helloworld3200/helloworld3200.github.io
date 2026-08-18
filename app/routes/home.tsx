@@ -1,4 +1,6 @@
-import { GH_LINK, NAME, LARGE_ICON_SIZE, ICON_SIZE } from "~/common/consts";
+import { GH_LINK, NAME } from "~/common/consts";
+import { LARGE_ICON_SIZE } from "~/common/ui-values";
+import { ICON_SIZE } from "~/common/ui-values";
 import type { Route } from "./+types/home";
 import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
 import { SiGithub as GHLogo } from "@icons-pack/react-simple-icons";
