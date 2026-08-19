@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { Temporal } from "temporal-polyfill";
+import { STD_LOADING_MSG } from "./ui-values";
+
+export type DateTimeFmt = Parameters<Temporal.ZonedDateTime["toLocaleString"]>
 
 // Use with Temporal.ZonedDateTime.toLocaleString(...FULL_TIME_FORMAT) to get YYYY-MM-DD,HH:mm:ss format.
-export const FULL_TIME_FORMAT: Parameters<Temporal.ZonedDateTime["toLocaleString"]> = [
+export const FULL_TIME_FORMAT: DateTimeFmt = [
     "en-CA",
     {
         year: 'numeric',
@@ -19,22 +22,30 @@ export const FULL_TIME_FORMAT: Parameters<Temporal.ZonedDateTime["toLocaleString
 
 export const SECOND_MS = 1000;
 
-export function useFullDateTime() {
+export function useFullDateTime(
+    opt: DateTimeFmt = FULL_TIME_FORMAT, 
+    intervalMs: number = SECOND_MS,
+    loadingMsg: string = STD_LOADING_MSG
+) {
     const [dt, setDt] = useState<string>();
 
+    function updateDt() {
+        const now = Temporal.Now.zonedDateTimeISO();
+
+        let formatted = now.toLocaleString(...opt);
+        formatted = formatted.replace(",", " "); // replace comma with space
+
+        setDt(formatted);
+    }
+
     useEffect(() => {
-        const interval = setInterval(() => {
-            const now = Temporal.Now.zonedDateTimeISO();
+        updateDt();
 
-            let formatted = now.toLocaleString(...FULL_TIME_FORMAT);
-            formatted = formatted.replace(",", " "); // repalce comma with space
-
-            setDt(formatted);
-        }, SECOND_MS);
+        const interval = setInterval(updateDt, intervalMs);
 
         return () => clearInterval(interval);
     }, []);
 
-    return dt;
+    return dt ?? loadingMsg;
 }
 

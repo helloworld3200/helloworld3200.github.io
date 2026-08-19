@@ -7,13 +7,16 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
-import "./app.css";
 import { Footer } from "./components/footer";
 import { FONT_SRC, NAME } from "./common/consts";
 import { type Empty } from "./common/helper";
 import { SquircleShapePolyfill } from "./components/squircle";
 import { DevInfo } from "./components/dev-inf";
 import type { PropsWithChildren } from "react";
+import { DevErrorBoundary, HTTPErrorBoundary } from "./components/error";
+
+// Add styling
+import "./app.css";
 
 // Technically it's recommended to migrate from the React Router links() function
 // to directly using <link> tags in React 19+, but this works well anyway 
@@ -51,13 +54,16 @@ function MetaInfo() {
   </>)
 }
 
+// Various polyfills, put them all here
 function Polyfills() {
   return (<>
     <SquircleShapePolyfill />
   </>)
 }
 
-export function Layout({ children }: PropsWithChildren<Empty>) {
+// Root layout which is applied to every page. Has foundational containers e.g. <html>, <body>, etc
+// and global components like the footer.
+export function Layout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <head>
@@ -77,29 +83,8 @@ export function Layout({ children }: PropsWithChildren<Empty>) {
   );
 }
 
-// Dev mode error boundary
-function DevErrorBoundary({ message, stack }: { message: string; stack: string }) {
-  return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1> Oops - error encountered in dev mode! </h1>
-      <p>{message}</p>
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-    </main>
-  )
-}
-
-// TODO: Finish implementing the upgraded error boundary
-function HTTPErrorBoundary({ status, details } : { status: string; details: string }) {
-  return (
-    <main className="flex flex-col py-16 px-16 h-screen">
-      <h3>{status}</h3>
-      <p>{details}</p>
-    </main>
-  );
-}
-
+// Handle any thrown errors. Routes to specific pages for HTTP errors in prod, shows stack trace in dev
+// and has a fallback if the error is unknown.
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let status = "Uh oh - unknown error!";
   let details = "Please report! This isn't meant to happen.";
@@ -127,6 +112,4 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   return <HTTPErrorBoundary status={status} details={details} />;
 }
 
-export default function App() {
-  return <Outlet />;
-}
+export default function App() { return <Outlet />; }
