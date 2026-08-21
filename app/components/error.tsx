@@ -1,5 +1,20 @@
 // Components to be used in error boundaries
 
+import { choice } from "~/common/helper";
+import { SwooshLink } from "./link";
+
+// Fun adlibs to display on errors
+const adlibs = [
+    "Whoopsie daisy!",
+    "Wh..wh..what's going on?!",
+    "Aw cripes...",
+    "That's what SHE said!",
+    "Hey, pal, I'm routing here!",
+    "What did you do?!",
+    "..We should exchange insurance info.",
+    "You have the right to remain silent."
+]
+
 // Dev mode error boundary
 export function DevErrorBoundary({ message, stack }: { message: string; stack: string; }) {
   return (
@@ -12,12 +27,16 @@ export function DevErrorBoundary({ message, stack }: { message: string; stack: s
     </main>
   );
 }
+
+// Boundary for HTTP errors (4XX/5XX) e.g. 404s
 // TODO: Finish implementing the upgraded error boundary
 export function HTTPErrorBoundary({ status, details }: { status: string; details: string; }) {
   return (
-    <main className="flex flex-col py-16 px-16 h-screen">
-      <h3>{status}</h3>
-      <p>{details}</p>
+    <main className="flex flex-col gap-5 py-16 px-16 h-screen bg-(image:--dim-gradient)">
+      <span className="text-8xl font-bold">{status}</span>
+      <p className="text-2xl tracking-tight">{details}</p>
+      <span className="text-lg tracking-tight text-slate-400"> { choice(adlibs) } </span>
+      <SwooshLink content="Return Home" go="/" />
     </main>
   );
 }

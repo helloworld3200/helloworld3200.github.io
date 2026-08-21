@@ -7,7 +7,7 @@
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "deploy": "gh-pages --nojekyll -m Deployment -d build/client"
+    "deploy": "echo 'Warning: Deploying doesn't autobuild! May not use latest changes.' && gh-pages --nojekyll -m Deployment -d build/client"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.15.1",

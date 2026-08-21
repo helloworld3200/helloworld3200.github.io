@@ -86,8 +86,8 @@ export function Layout({ children }: PropsWithChildren) {
 // Handle any thrown errors. Routes to specific pages for HTTP errors in prod, shows stack trace in dev
 // and has a fallback if the error is unknown.
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let status = "Uh oh - unknown error!";
-  let details = "Please report! This isn't meant to happen.";
+  let status = "Unknown Error";
+  let details = "Whoops - something went wrong! Please try again later.";
 
   const isDevError = import.meta.env.DEV && error && error instanceof Error;
   const GENERIC_ERR_STACK_MSG = "Error stack trace unknown!";

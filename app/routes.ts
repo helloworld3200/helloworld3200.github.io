@@ -10,7 +10,7 @@ const routes = [
 if (import.meta.env.DEV) {
     routes.push(
         ...prefix("dev/", [
-            route("visuals-testing", "routes/visuals-testing.tsx")
+            route("visuals-testing", "routes/dev/visuals-testing.tsx")
         ])
     )
 }
