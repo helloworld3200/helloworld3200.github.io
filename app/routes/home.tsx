@@ -5,7 +5,7 @@ import type { Route } from "./+types/home";
 import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
 import { SiGithub as GHLogo } from "@icons-pack/react-simple-icons";
 import type { ElementType } from "react";
-import { VANTA_PRESETS, VantaFX } from "~/components/graphics";
+import { VANTA_PRESETS, VantaFX } from "~/components/graphics/vanta";
 import { SwooshLink } from "~/components/link";
 
 // Maybe make it so that each element fades in?
@@ -96,10 +96,9 @@ function HeroStyleModern() {
     ">
       <div className="
         w-full h-full
-        flex flex-col px-20 py-50 gap-5 justify-start items-start
+        flex flex-col px-20 py-50 gap-30 justify-center items-start
       ">
-        <Name />
-        <Tagline />
+        <Me />
         <ContactBar />
       </div>
     </VantaFX>

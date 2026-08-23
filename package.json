@@ -15,7 +15,7 @@
     "@react-router/serve": "7.14.0",
     "gh-pages": "^6.3.0",
     "isbot": "^5.2.1",
-    "lucide-react": "^1.31.0",
+    "lucide-react": "^1.33.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router": "7.14.0",
@@ -35,6 +35,6 @@
     "@types/three-legacy": "npm:@types/three@0.140.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
-    "vite": "^8.2.1"
+    "vite": "^8.2.2"
   }
 }

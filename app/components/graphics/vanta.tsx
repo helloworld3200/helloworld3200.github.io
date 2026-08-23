@@ -1,4 +1,5 @@
-// Various high-end graphical effects to use sparingly! throughout the app.
+// Wrappers for high-end VANTA graphical effects to easily plug into pages
+// throughout the app. Use sparingly!
 
 import { useRef, useState, useEffect, type PropsWithChildren } from "react";
 import * as LegacyTHREE from 'three-legacy';
@@ -20,6 +21,7 @@ export interface VantaEffectConfig {
 // Common, ready-made VANTA effect presets to use wherever
 export const VANTA_PRESETS: Record<string, VantaEffectConfig> = {
     // Globe with colours and sizing to be used on homepage hero section
+    // shower thought: call this the "eleglobe" (portmanteau of elegant & globe)
     GLOBE_HERO: {
         setup: VantaGlobeEffect,
         args: {

@@ -1,4 +1,4 @@
-// Various link components to make navigation that much more elegant.
+// Various link (& link-adjacent) components to make navigation that much more elegant.
 
 import { ICON_SIZE, LARGE_ICON_SIZE } from "~/common/ui-values";
 import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
@@ -83,3 +83,7 @@ export function SwooshLink(
     </div>
   )
 }
+
+// Like SwooshLink except it doesn't go to another page, but reveals text instead.
+// example: "Email me" - > "me@example.com" (replaces the text with email address on click)
+function SwooshUncoverLink() {}
