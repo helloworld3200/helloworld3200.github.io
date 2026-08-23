@@ -16,7 +16,7 @@ export function SwooshLink(
     go, 
     StandbyIcon = {element: ArrowUpRight, size: ICON_SIZE},
     ReadyIcon = {element: ArrowUpRight, size: ICON_SIZE},
-  }: { 
+  } : { 
     content: string; 
     go: string | (() => void);
     StandbyIcon?: LinkIcon;
@@ -86,4 +86,22 @@ export function SwooshLink(
 
 // Like SwooshLink except it doesn't go to another page, but reveals text instead.
 // example: "Email me" - > "me@example.com" (replaces the text with email address on click)
-function SwooshUncoverLink() {}
+function SwooshUncoverLink(
+  {
+    content,
+    reveal,
+    StandbyIcon = {element: ArrowUpRight, size: ICON_SIZE},
+    ReadyIcon = {element: ArrowUpRight, size: ICON_SIZE},
+  } : {
+    content: string;
+    reveal: string;
+    StandbyIcon?: LinkIcon;
+    ReadyIcon?: LinkIcon;
+  }
+) {
+  
+
+  return (<div>
+
+  </div>)
+}

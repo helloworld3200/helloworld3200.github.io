@@ -31,7 +31,7 @@ function DevHeader() {
 
 // Telemetry category to dispaly a list of data e.g. DevEntrys in a related section
 function DevCategory({ title, children }: PropsWithChildren<{ title: string }>) {
-    return (<div className="flex flex-col gap-2">
+    return (<div className="flex flex-col gap-1">
         <span className="text-xl font-semibold tracking-tight">{title}</span>
         {children}
     </div>)
@@ -40,7 +40,7 @@ function DevCategory({ title, children }: PropsWithChildren<{ title: string }>) 
 // Entry in each category - can be used alongside other custom UI to display data in each category
 // but this should be the bulk of data
 function DevEntry({ title, text, children }: PropsWithChildren<{ title: string; text?: string }>) {
-    return (<div className="flex flex-row items-start justify-between gap-2 px-4 py-2">
+    return (<div className="flex flex-row items-start justify-between gap-2 px-1 py-1">
         <span className="text-lg font-normal tracking-tight">{title}</span>
         <div className="flex flex-row items-center justify-end gap-2">
             {text && <DevText text={text} />}
@@ -82,6 +82,15 @@ function UIInfo() {
     </DevCategory>)
 }
 
+function ClientInfo() {
+    return (<DevCategory title="Client">
+        <DevEntry title="User Agent" text={ navigator.userAgent } />
+        <DevEntry title="Cores" text={ navigator.hardwareConcurrency.toString() } />
+        <DevEntry title="Automated" text={ navigator.webdriver.toString() } />
+        <DevEntry title="Languages" text={ navigator.languages.join(", ") } />
+    </DevCategory>)
+}
+
 // Main component for displaying helpful debug and telemetry information for development mode.
 export function DevInfo() {
     return (
@@ -89,6 +98,7 @@ export function DevInfo() {
             <RoutingInfo />
             <PaintInfo />
             <UIInfo />
+            <ClientInfo />
         </DevContainer>
     )
 }
