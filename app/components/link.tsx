@@ -9,6 +9,11 @@ export type LinkIcon = {
   size: number
 };
 
+// Sweeps out an underline on hover. WARNING: MUST BE USED WITH "group" tw class as a parent!
+export function HoverSweepUnderline() {
+  return <span className="absolute left-0 -bottom-2 h-0.5 w-0 bg-current transition-all duration-(--hover-anim-duration-slow) group-hover:w-full" />
+}
+
 // Swooshed, attention-grabbing animated link
 // first prop is content and second is a function which can be set to open a new tab, open a popup, etc
 export function SwooshLink(
@@ -18,7 +23,7 @@ export function SwooshLink(
     ReadyIcon = {element: ArrowUpRight, size: ICON_SIZE},
   } : { 
     content: string; 
-    go: string | (() => void);
+    go: string | (() => unknown);
     StandbyIcon?: LinkIcon;
     ReadyIcon?: LinkIcon;
   }) {
@@ -32,6 +37,7 @@ export function SwooshLink(
 
   // formerly clipped to [clip-path:url(#squircle)] - copy n paste to reimplement again
 
+  // Internal component includes icons + text + hover underline. Should be used within tailwind group.
   function InternalLink() {
     return (<>
       <div className="
@@ -59,7 +65,7 @@ export function SwooshLink(
 
       <span>{content}</span>
       
-      <span className="absolute left-0 -bottom-2 h-0.5 w-0 bg-current transition-all duration-(--hover-anim-duration-slow) group-hover:w-full"></span>
+      <HoverSweepUnderline />
     </>)
   }
 
@@ -69,6 +75,7 @@ export function SwooshLink(
 
   return (
     <div className="group flex">
+      {/* This div layer JUST translates everything up slightly on hover, all other styling happens in the subcomponents*/}
       <div className="transition-transform duration-300 group-hover:-translate-y-3">
         {useAnchor ? (
           <a href={go} target="_blank" className={contactClass}>
@@ -86,7 +93,7 @@ export function SwooshLink(
 
 // Like SwooshLink except it doesn't go to another page, but reveals text instead.
 // example: "Email me" - > "me@example.com" (replaces the text with email address on click)
-function SwooshUncoverLink(
+export function SwooshUncoverLink(
   {
     content,
     reveal,
