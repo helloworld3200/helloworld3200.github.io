@@ -7,6 +7,7 @@ import { SiGithub as GHLogo } from "@icons-pack/react-simple-icons";
 import type { ElementType } from "react";
 import { VANTA_PRESETS, VantaFX } from "~/components/graphics/vanta";
 import { SwooshLink } from "~/components/link";
+import { nothing } from "~/common/helper";
 
 // Maybe make it so that each element fades in?
 
@@ -43,7 +44,9 @@ function Me() {
 }
 
 function ContactBar() {
-  return (<div className="flex flex-row gap-5 items-center">
+  return (<div className="flex flex-row gap-3 items-center">
+    <SwooshLink content="GitHub" go={nothing} StandbyIcon={{element: GHLogo, size: LARGE_ICON_SIZE}} />
+    <SwooshLink content="GitHub" go={GH_LINK} StandbyIcon={{element: GHLogo, size: LARGE_ICON_SIZE}} />
     <SwooshLink content="GitHub" go={GH_LINK} StandbyIcon={{element: GHLogo, size: LARGE_ICON_SIZE}} />
   </div>)
 }

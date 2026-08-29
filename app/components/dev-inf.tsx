@@ -53,7 +53,7 @@ export function DevEntry({ title, text, children }: PropsWithChildren<{ title: s
 export function DevContainer({ children }: PropsWithChildren) {
     return (<div className="bg-blue-950">
         <DevHeader />
-        <div className="flex flex-col gap-2 h-screen px-8 py-5">
+        <div className="flex flex-col gap-2 px-8 py-5">
             {children}
         </div>
     </div>)
