@@ -2,7 +2,11 @@
 // should be for basic, fundamental data only. put other constants in their own files!
 
 export const NAME = "helloworld3200";
-export const GH_LINK = "https://github.com/" + NAME + "/";
+
+export const LINKS = {
+    githubProfile: "https://github.com/helloworld3200/",
+    githubRepo: "https://github.com/helloworld3200/helloworld3200.github.io",
+};
 
 // Font sources. Will be imported using <link> tags in root.tsx. ONLY Google fonts!
 export const FONT_SRC = [

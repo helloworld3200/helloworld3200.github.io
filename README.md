@@ -7,6 +7,8 @@
 ![Website: Awesome!!!](https://img.shields.io/badge/website-awesome-orange?style=flat)
 ![Code: Clean](https://img.shields.io/badge/code-clean-purple?style=flat)
 
+## 🚧 NOT FINISHED YET; WORK IN PROGRESS!!!
+
 ## Ingredients
 
 - Made with Vite + React Router v7 (prerendering + SSG); Tailwind; and other assorted libraries for utility.
