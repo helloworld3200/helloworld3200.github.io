@@ -15,8 +15,6 @@ if (import.meta.env.DEV) {
             route("visuals-testing", "routes/dev/visuals-testing.tsx"),
             // Always routes to home
             route("home", "routes/home.tsx"),
-            // Can be used to check how 404 erorrs render
-            route("err404", "routes/err404.tsx"),
         ])
     )
 }
