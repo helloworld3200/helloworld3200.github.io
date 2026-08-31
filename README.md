@@ -24,8 +24,8 @@ Why not check out the source code? It's clean and optimized, just like the site 
 
 ## Domains
 
-1. **Main** - hosted on GitHub Pages: [helloworld3200.github.io](`helloworld3200.github.io`)
-2. **Secondary Backup** - hosted on Cloudflare Pages: []()
+1. **Main** - hosted on GitHub Pages: [helloworld3200.github.io](`https://helloworld3200.github.io`)
+2. **Secondary Backup** - hosted on Cloudflare Pages: [helloworld3200-github-io.pages.dev](https://helloworld3200-github-io.pages.dev/)
 
 ## Inspo
 
