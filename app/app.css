@@ -1,0 +1,21 @@
+/*
+  All bespoke styling and effects for the site are custom made with tailwind
+  without any external helper frameworks so that I can create the best possible look.
+
+  Main app.css file applied across whole site, although some styling config is
+  separated into other files for modularity so that it's easier to manage.
+  e.g. the complex swoosh-icon transition system has been put into css/swoosh-icon.css
+*/
+
+/* Custom font imports now live in consts.ts */
+
+@import "tailwindcss";
+
+@import "css/theme.css";
+
+@import "css/swoosh-icon.css";
+
+@import "css/bg-utils.css";
+
+@import "css/base.css";
+

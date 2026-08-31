@@ -1,0 +1,19 @@
+/*
+Swoosh icons!!
+
+    Basically can be applied to icons which you want to swoosh away nicely when the user hovers over them.
+    How is it "nice"?
+    
+    It segregates away the movement and the opacity change transitions
+    so that the icon fades out first before moving past the element border
+    otherwise what happens is without the fade out it looks like the icon abruptly gets
+    sliced off by the element border which looks bad.
+    ^ this "ugly" form of the transition is what happens with a simple TW transition-all
+*/
+
+@utility swoosh-away {
+    transition: 
+        translate var(--hover-anim-duration-slow) ease-in-out,
+        opacity var(--hover-anim-duration-fast) ease-in-out,
+        scale var(--hover-anim-duration-fast) ease-in-out;
+}

@@ -1,0 +1,24 @@
+import { type RouteConfig, index, prefix, route } from "@react-router/dev/routes";
+
+// Base routes
+const routes = [
+    index("routes/wip.tsx"),
+    // We have to explicitly specify this route because GH pages expects a 404.html file to be present
+    route("404", "routes/err404.tsx"),
+]
+
+// Development-only routes
+if (import.meta.env.DEV) {
+    routes.push(
+        ...prefix("dev/", [
+            // Graphics testing
+            route("visuals-testing", "routes/dev/visuals-testing.tsx"),
+            // Always routes to home
+            route("home", "routes/home.tsx"),
+            // Can be used to check how 404 erorrs render
+            route("err404", "routes/err404.tsx"),
+        ])
+    )
+}
+
+export default routes satisfies RouteConfig;

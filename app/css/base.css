@@ -1,0 +1,10 @@
+/* Base element styling */
+
+html,
+body {
+  @apply bg-white text-black dark:text-stdfore dark:bg-neutral-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
