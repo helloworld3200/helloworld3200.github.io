@@ -25,7 +25,7 @@
   /* in std TW looks like: bg-linear-to-bl from-slate-950 via-mist-900 to-stone-900 
     abstract gradient in the style of a dim night sky with a subtle sunrise beginning on bottom-left
   */
-  --dim-gradient: linear-gradient(to bottom left, var(--color-slate-950), var(--color-mist-900), var(--color-stone-900));
+  --dim-gradient: linear-gradient(to bottom left, var(--color-slate-950), var(--color-mist-950), var(--color-stone-900));
 
   --animate-gradient: gradient 10s linear infinite;
 

@@ -29,7 +29,6 @@ export function DevErrorBoundary({ message, stack }: { message: string; stack: s
 }
 
 // Boundary for HTTP errors (4XX/5XX) e.g. 404s
-// TODO: Finish implementing the upgraded error boundary
 export function HTTPErrorBoundary({ status, details }: { status: string; details: string; }) {
   return (
     <main className="flex flex-col gap-5 py-16 px-16 h-screen bg-(image:--dim-gradient)">
@@ -39,4 +38,9 @@ export function HTTPErrorBoundary({ status, details }: { status: string; details
       <SwooshLink content="Return Home" go="/" />
     </main>
   );
+}
+
+// Always 404 errors - can be used to simulate a 404 error
+export function RSC404ErrorBoundary() {
+  return (<HTTPErrorBoundary status="404" details="This page doesn't exist! Please check the URL and try again." />);
 }

@@ -8,7 +8,7 @@ import {
 
 import type { Route } from "./+types/root";
 import { Footer } from "./components/footer";
-import { FONT_SRC, NAME } from "./common/consts";
+import { FONT_SRC, NAME, ERR_MSG_404 } from "./common/consts";
 import { type Empty } from "./common/helper";
 import { SquircleShapePolyfill } from "./components/squircle";
 import { DevInfo } from "./components/dev-inf";
@@ -102,7 +102,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     status = error.status.toString();
     
     details = is404
-        ? "This page doesn't exist! Please check the URL and try again."
+        ? ERR_MSG_404
         : error.statusText || details;
   } else if (isDevError) {
     // In dev mode, show the error message and stack trace
