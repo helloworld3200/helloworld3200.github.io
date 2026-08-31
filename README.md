@@ -27,6 +27,8 @@ Why not check out the source code? It's clean and optimized, just like the site 
 1. **Main** - hosted on GitHub Pages: [helloworld3200.github.io](`https://helloworld3200.github.io`)
 2. **Secondary Backup** - hosted on Cloudflare Pages: [helloworld3200-github-io.pages.dev](https://helloworld3200-github-io.pages.dev/)
 
+*All deployments are made from the `gh-pages` branch (which contains the final static files), not `main`.*
+
 ## Inspo
 
 - Fluid gradient text effect with moving colours in the hero was inspired by Animex's similarly animated hero text
