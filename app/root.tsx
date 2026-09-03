@@ -8,15 +8,17 @@ import {
 
 import type { Route } from "./+types/root";
 import { Footer } from "./components/footer";
-import { FONT_SRC, NAME, ERR_MSG_404 } from "./common/consts";
+import { FONT_SRC, NAME } from "./common/consts";
 import { type Empty } from "./common/helper";
 import { SquircleShapePolyfill } from "./components/squircle";
 import { DevInfo } from "./components/dev-inf";
 import type { PropsWithChildren } from "react";
-import { DevErrorBoundary, HTTPErrorBoundary } from "./components/error";
 
 // Add styling
 import "./app.css";
+
+// Export automatic error boundary as imported from error.tsx
+export { AutoErrorBoundary as ErrorBoundary } from "./components/error";
 
 // Technically it's recommended to migrate from the React Router links() function
 // to directly using <link> tags in React 19+, but this works well anyway 
@@ -83,33 +85,6 @@ export function Layout({ children }: PropsWithChildren) {
   );
 }
 
-// Handle any thrown errors. Routes to specific pages for HTTP errors in prod, shows stack trace in dev
-// and has a fallback if the error is unknown.
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let status = "Unknown Error";
-  let details = "Whoops - something went wrong! Please try again later.";
 
-  const isDevError = import.meta.env.DEV && error && error instanceof Error;
-  const GENERIC_ERR_STACK_MSG = "Error stack trace unknown!";
-
-  // Runs on 4XX/5XX errors. In prod this should ALWAYS be true!
-  // If for some reason it isn't - the default error message above will be shown.
-  // Curious to see how this works since we're deploying to Github Pages statically
-  // so will react router trim down ErrorBoundary to only ever render the 404 response? We'll see!
-  if (isRouteErrorResponse(error)) {
-    const is404 = error.status === 404;
-
-    status = error.status.toString();
-    
-    details = is404
-        ? ERR_MSG_404
-        : error.statusText || details;
-  } else if (isDevError) {
-    // In dev mode, show the error message and stack trace
-    return <DevErrorBoundary message={error.message} stack={error.stack || GENERIC_ERR_STACK_MSG} />;
-  }
-
-  return <HTTPErrorBoundary status={status} details={details} />;
-}
 
 export default function App() { return <Outlet />; }

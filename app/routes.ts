@@ -1,4 +1,5 @@
 import { type RouteConfig, index, prefix, route } from "@react-router/dev/routes";
+import { DEV_ROUTE_PREFIX } from "./common/routing-util";
 
 // Base routes
 const routes = [
@@ -10,7 +11,7 @@ const routes = [
 // Development-only routes
 if (import.meta.env.DEV) {
     routes.push(
-        ...prefix("dev/", [
+        ...prefix(DEV_ROUTE_PREFIX, [
             // Graphics testing
             route("visuals-testing", "routes/dev/visuals-testing.tsx"),
             // Always routes to home

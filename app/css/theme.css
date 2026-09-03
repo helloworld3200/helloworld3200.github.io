@@ -14,6 +14,9 @@
   --color-stdfore: var(--color-neutral-50);
   --color-stdfore-highlight: var(--color-neutral-400);
 
+  --color-stdpositive: var(--color-green-500);
+  --color-stdnegative: var(--color-red-500);
+
   --hover-anim-duration-slow: 300ms;
   --hover-anim-duration-fast: 200ms;
 

@@ -14,5 +14,3 @@ export const FONT_SRC = [
     "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
     "https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap"
 ];
-
-export const ERR_MSG_404 = "This page doesn't exist! Please check the URL and try again.";

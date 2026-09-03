@@ -4,14 +4,22 @@
 import { Code } from "lucide-react";
 import { type PropsWithChildren, version as REACT_VERSION } from "react";
 import { useFullDateTime } from "~/common/time";
-import type { Empty } from "~/common/helper";
-import { useLocation } from "react-router";
+import { useRouteInfo } from "~/common/routing-util";
 
-// Standard monospace text component for displaying dev info
-export function DevText({ text }: { text: string }) {
+// Types of data that can be directly displayed in DevText. For all other types, convert your data to a string first!
+export type ParseableDevText = string | boolean; 
+
+// Standard monospace text component for displaying dev info - if boolean value is passed it will show green/red text colours for T/F vals
+export function DevText({ text }: { text: ParseableDevText }) {
+    // If text is bool then show standard positive colour for true/std negative colour for false, otherwise show default colour
+    const color = typeof text === "boolean" ? 
+        (text ? "text-stdpositive" : "text-stdnegative") : "";
+
+    
+
     return (
-        <span className="text-lg font-mono font-light tracking-tight">
-            {text}
+        <span className={`text-lg font-mono font-light tracking-tight ${color}`}>
+            {text.toString()}
         </span>
     )
 }
@@ -39,7 +47,10 @@ export function DevCategory({ title, children }: PropsWithChildren<{ title: stri
 
 // Entry in each category - can be used alongside other custom UI to display data in each category
 // but this should be the bulk of data
-export function DevEntry({ title, text, children }: PropsWithChildren<{ title: string; text?: string }>) {
+export function DevEntry({ title, text, children }: PropsWithChildren<{ 
+    title: string; 
+    text?: ParseableDevText
+}>) {
     return (<div className="flex flex-row items-start justify-between gap-2 px-1 py-1">
         <span className="text-lg font-normal tracking-tight">{title}</span>
         <div className="flex flex-row items-center justify-end gap-2">
@@ -63,10 +74,11 @@ export function DevContainer({ children }: PropsWithChildren) {
 
 // Info category about current routing
 function RoutingInfo() {
-    const location = useLocation();
+    const info = useRouteInfo();
 
     return (<DevCategory title="Routing">
-        <DevEntry title="Location" text={ location.pathname } />
+        <DevEntry title="Location" text={ info.path } />
+        <DevEntry title="Dev-only Route" text={ info.isDevRoute } />
     </DevCategory>)
 }
 
