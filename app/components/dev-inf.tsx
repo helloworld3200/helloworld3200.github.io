@@ -7,7 +7,7 @@ import { useFullDateTime } from "~/common/time";
 import { useRouteInfo } from "~/common/routing-util";
 
 // Types of data that can be directly displayed in DevText. For all other types, convert your data to a string first!
-export type ParseableDevText = string | boolean; 
+export type ParseableDevText = string | boolean | number; 
 
 // Standard monospace text component for displaying dev info - if boolean value is passed it will show green/red text colours for T/F vals
 export function DevText({ text }: { text: ParseableDevText }) {
@@ -15,11 +15,14 @@ export function DevText({ text }: { text: ParseableDevText }) {
     const color = typeof text === "boolean" ? 
         (text ? "text-stdpositive" : "text-stdnegative") : "";
 
-    
+    // Render numbers nicely with commas
+    if (typeof text === "number") {
+        text = text.toLocaleString("en-US");
+    }
 
     return (
         <span className={`text-lg font-mono font-light tracking-tight ${color}`}>
-            {text.toString()}
+            { text.toString() }
         </span>
     )
 }

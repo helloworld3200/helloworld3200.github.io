@@ -54,51 +54,39 @@ export function HoverSweepUnderline() {
 // first prop is content and second is a function OR href which can be set to open a new tab, open a popup, etc
 // this is a GENERIC component that can be used for any sort of link
 // - specifically for hyperlinks, use SwooshHyperlink, use SwooshUncoverLink for links that reveal text instead of going to a new page, etc
+
+// REVAMP IN PROGRESS
 export function SwooshLink(
   { content, 
-    go, 
-    ...icons
+    icons,
+    underline = true
   } : { 
     content: string; 
-    go: string | (() => unknown);
-  } & Parameters<typeof SwooshIcons>[0]) {
+    icons: React.ReactNode;
+    underline?: boolean;
+  }) {
   // if its a string then return an anchor element with that string set to its href
   // if not then return a button element with the onClick set to that function
   // that way this can be used for both basic links and link-adjacent controls with more complex behavior
 
   // formerly clipped to [clip-path:url(#squircle)] - copy n paste to reimplement again
 
-  // Internal component includes icons + text + hover underline. Should be used within tailwind group.
-  function InternalLink() {
-    return (<>
-      <SwooshIcons {...icons} />
-      <HoverSweepUnderline />
-      <span>{content}</span>
-    </>)
-  }
-
-  const useAnchor = typeof go === "string";
-  
-  const contactClass = "flex flex-row gap-1 items-center text-3xl font-medium tracking-normal relative px-2 cursor-pointer";
-
   return (
     <div className="group flex">
-      {useAnchor ? (
-        <a href={go} target="_blank" className={contactClass}>
-          <InternalLink />
-        </a>
-      ) : (
-        <span className={contactClass} onClick={go}>
-          <InternalLink />
-        </span>
-      )}
+        <div className="flex flex-row gap-1 items-center text-3xl font-medium tracking-normal relative px-2 cursor-pointer">
+          {icons}
+          { underline && <HoverSweepUnderline /> }
+          <span>{content}</span>
+        </div>
     </div>
   )
 }
 
-// Swooshed, attention-grabbing hyperlink to send users to other pages.
-export function SwooshHyperlink() {
-
+// Vanilla anchor that uses the default opener/referrer setup for the site
+export function VanillaAnchor({ href }: { href: string }) {
+  return (
+    <a href={href} />
+  )
 }
 
 // Like SwooshLink except it doesn't go to another page, but reveals text instead.
